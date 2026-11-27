@@ -9,7 +9,7 @@ FOR SELECT
 TO authenticated
 USING (
   id = auth.uid()
-  OR auth.uid() = 'ea8f2351-fd94-43ba-a827-b66ea7008149'::uuid
+  OR auth.uid() = 'f7435bbd-5b4d-4296-b6ce-c24db1edad2e'::uuid
 );
 
 REVOKE SELECT ON TABLE public.profiles FROM anon, authenticated;

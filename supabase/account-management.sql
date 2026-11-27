@@ -103,7 +103,7 @@ STABLE
 SECURITY DEFINER
 SET search_path = public
 AS $$
-  SELECT auth.uid() = 'ea8f2351-fd94-43ba-a827-b66ea7008149'::uuid;
+  SELECT auth.uid() = 'f7435bbd-5b4d-4296-b6ce-c24db1edad2e'::uuid;
 $$;
 
 CREATE OR REPLACE FUNCTION public.is_fed()
@@ -274,7 +274,7 @@ $$;
 INSERT INTO public.profiles (id, mail, role, created_at, updated_at)
 SELECT id, email, FALSE, NOW(), NOW()
 FROM auth.users
-WHERE id = 'ea8f2351-fd94-43ba-a827-b66ea7008149'
+WHERE id = 'f7435bbd-5b4d-4296-b6ce-c24db1edad2e'
 ON CONFLICT (id) DO UPDATE SET
   mail = EXCLUDED.mail,
   role = FALSE,
@@ -282,7 +282,7 @@ ON CONFLICT (id) DO UPDATE SET
 
 UPDATE public.profiles
 SET role = FALSE, updated_at = NOW()
-WHERE id = 'ea8f2351-fd94-43ba-a827-b66ea7008149';
+WHERE id = 'f7435bbd-5b4d-4296-b6ce-c24db1edad2e';
 
 -- -----------------------
 -- RLS
@@ -331,7 +331,7 @@ FOR SELECT
 TO authenticated
 USING (
   id = auth.uid()
-  OR auth.uid() = 'ea8f2351-fd94-43ba-a827-b66ea7008149'::uuid
+  OR auth.uid() = 'f7435bbd-5b4d-4296-b6ce-c24db1edad2e'::uuid
 );
 
 DROP POLICY IF EXISTS "profiles_update_own_or_admin" ON public.profiles;
@@ -484,7 +484,7 @@ AS $$
     AND EXISTS (
       SELECT 1
       FROM public.profiles admin
-      WHERE admin.id = 'ea8f2351-fd94-43ba-a827-b66ea7008149'::uuid
+      WHERE admin.id = 'f7435bbd-5b4d-4296-b6ce-c24db1edad2e'::uuid
         AND lower(admin.mail) = lower(trim(p_admin_mail))
         AND admin.contraseña = p_admin_password
     );
@@ -509,7 +509,7 @@ DECLARE
 BEGIN
   IF NOT EXISTS (
     SELECT 1 FROM public.profiles admin
-    WHERE admin.id = 'ea8f2351-fd94-43ba-a827-b66ea7008149'::uuid
+    WHERE admin.id = 'f7435bbd-5b4d-4296-b6ce-c24db1edad2e'::uuid
       AND lower(admin.mail) = lower(trim(p_admin_mail))
       AND admin.contraseña = p_admin_password
   ) THEN
@@ -566,7 +566,7 @@ DECLARE
 BEGIN
   IF NOT EXISTS (
     SELECT 1 FROM public.profiles admin
-    WHERE admin.id = 'ea8f2351-fd94-43ba-a827-b66ea7008149'::uuid
+    WHERE admin.id = 'f7435bbd-5b4d-4296-b6ce-c24db1edad2e'::uuid
       AND lower(admin.mail) = lower(trim(p_admin_mail))
       AND admin.contraseña = p_admin_password
   ) THEN

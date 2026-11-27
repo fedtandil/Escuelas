@@ -27,7 +27,7 @@ Deno.serve(async (request) => {
       return json({ error: "No autorizado." }, 401);
     }
 
-    if (authData.user.id !== "ea8f2351-fd94-43ba-a827-b66ea7008149") {
+    if (authData.user.id !== "f7435bbd-5b4d-4296-b6ce-c24db1edad2e") {
       return json({ error: "Solo el administrador puede gestionar cuentas F.E.D." }, 403);
     }
 

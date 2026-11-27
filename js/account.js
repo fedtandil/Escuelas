@@ -1,5 +1,5 @@
 (()=>{
-  const config=window.SIRIONI_SUPABASE_CONFIG;
+  const config=window.SUPABASE_CONFIG||window.SIRIONI_SUPABASE_CONFIG;
   const configured=config?.url&&!config.url.includes("TU-PROYECTO")&&config?.anonKey&&!config.anonKey.includes("TU_CLAVE_PUBLICA");
   const client=configured&&window.supabase?.createClient
     ?window.supabase.createClient(config.url,config.anonKey,{
@@ -99,7 +99,7 @@
     notifyAuthChange();
   };
   const renderSignedIn=(user,profile)=>{
-    const adminUserId="ea8f2351-fd94-43ba-a827-b66ea7008149";
+    const adminUserId="f7435bbd-5b4d-4296-b6ce-c24db1edad2e";
     const isAdmin=user.id===adminUserId;
     const isFed=typeof profile?.role=== "boolean"&&profile.role===true;
 
